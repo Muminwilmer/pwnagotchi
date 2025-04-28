@@ -233,7 +233,7 @@ class Webgpsmap(plugins.Plugin):
                 check_for = os.path.basename(pos_file).split(".")[0] + ".pcap.cracked"
                 if check_for in all_files:
                     gps_data[ssid + "_" + mac]["pass"] = pos.password()
-                if self.options['onlyShowPass'] and not gps_data[ssid + "_" + mac].get("pass"):
+                if 'onlyShowPass' in self.options and self.options['onlyShowPass']: and not gps_data[ssid + "_" + mac].get("pass"):
                     logging.debug(f"[webgpsmap] No password detected for {ssid} removing from map.")
                     del gps_data[ssid + "_" + mac]
                 self.ALREADY_SENT += pos_file
